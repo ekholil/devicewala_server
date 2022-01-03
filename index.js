@@ -8,10 +8,10 @@ const ObjectId = require('mongodb').ObjectId
 app.use(cors())
 app.use(express.json())
 app.get('/', (req, res) => {
-    res.send('This is the server of devicewala')
+  res.send('This is the server of devicewala')
 })
 app.listen(port, () => {
-    console.log('Server running at port ' + port)
+  console.log('Server running at port ' + port)
 })
 const uri = `mongodb+srv://travelist:ClrwXqUly9jwCqsJ@cluster0.odpvs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -55,14 +55,14 @@ async function run() {
     //     res.send(result) 
     //   })
 
-      // api for find single product with id
-      app.get('/product/:id', async(req, res) => {
-        const id = req.params.id
-        const query = {_id : ObjectId(id)}
-        const result = await productCollection.findOne(query)
-        res.send(result)
-      })
-    
+    // api for find single product with id
+    app.get('/product/:id', async (req, res) => {
+      const id = req.params.id
+      const query = { _id: ObjectId(id) }
+      const result = await productCollection.findOne(query)
+      res.send(result)
+    })
+
     //   // //post api
     //   app.post('/addproduct', async(req, res) => {
     //     const data = req.body;
@@ -83,7 +83,7 @@ async function run() {
     //     res.send(result)
     //     console.log(result)
     //   })
-      // check admin
+    // check admin
     //   app.get('/users/:email', async(req, res) => {
     //     const email = req.params.email;
     //     const query = {email: email}
@@ -94,7 +94,7 @@ async function run() {
     //     }
     //     res.json({admin: isAdmin})
     //   })
-     
+
     //   // make admin api 
     //   app.put('/users/admin', async(req, res) => {
     //     const user = req.body;
@@ -110,7 +110,7 @@ async function run() {
     //     const result = await ordersCollection.find(query).toArray()
     //     res.send(result)
     //   })
-    
+
     //   // //delete api
     //   app.delete('/cancelorder/:id', async(req, res) => {
     //     const id = req.params.id;
@@ -148,11 +148,11 @@ async function run() {
     //     const result = await ordersCollection.updateOne(filter, updateDoc, options)
     //     console.log('upadating user ', id)
     //     res.send(result)
-        
+
     //   })
-      
-    } finally {
-    
-    }
+
+  } finally {
+
   }
-  run().catch(console.dir);
+}
+run().catch(console.dir);
