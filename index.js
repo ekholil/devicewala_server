@@ -13,7 +13,8 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
   console.log('Server running at port ' + port)
 })
-const uri = `mongodb+srv://travelist:ClrwXqUly9jwCqsJ@cluster0.odpvs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.odpvs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 async function run() {
@@ -39,6 +40,13 @@ async function run() {
       const id = req.params.id
       const query = { _id: ObjectId(id) }
       const result = await productCollection.findOne(query)
+      res.send(result)
+    })
+    // api for find similar product with category
+    app.get('/products/:category', async (req, res) => {
+      const category = req.params.category
+      const query = { category: category }
+      const result = await productCollection.find(query).toArray()
       res.send(result)
     })
 
