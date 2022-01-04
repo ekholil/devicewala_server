@@ -74,6 +74,12 @@ async function run() {
       const result = await ordersCollection.insertOne(orders);
       res.json(result);
     });
+    // POST API  products send to database
+    app.post('/products', async (req, res) => {
+      const orders = req.body;
+      const result = await productCollection.insertOne(orders);
+      res.json(result);
+    });
 
     // DELETE Order  with user
     app.delete('/orders/:id', async (req, res) => {
