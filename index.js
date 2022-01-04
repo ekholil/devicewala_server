@@ -20,9 +20,10 @@ async function run() {
   try {
     await client.connect();
     const productCollection = client.db("devicewala").collection("allproducts");
-    const ordersCollection = database.collection("orders");
-    const reviewCollection = database.collection("review");
-    const usersCollection = database.collection("users");
+    const ordersCollection = client.db("devicewala").collection("orders");
+    const reviewCollection = client.db("devicewala").collection("review");
+    const usersCollection = client.db("devicewala").collection("users");
+ 
 
 
 
